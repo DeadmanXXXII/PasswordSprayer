@@ -6,9 +6,9 @@ import string
 import itertools
 
 # Configure your target URL and input field details
-URL = "http://example.com/login"  # Replace with the actual URL
+URL = "https://gmail.com/login"  # Replace with the actual URL
 INPUT_BOX_ID = "password"         # Replace with the actual input box ID
-SUCCESS_TEXT = "Welcome"          # Replace with the success indicator (e.g., "Login successful")
+SUCCESS_TEXT = "H4ck3d_1t"          # Replace with the success indicator (e.g., "Login successful")
 
 # Function to generate characters
 def generate_passwords(charset, length):
