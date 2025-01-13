@@ -2,7 +2,10 @@
 My take on how this should be done.
 
 ## To run:
+check paths for google-chrome or chromium and your webdriver path.
+```
 python3 sprayer.py
+```
 
 The only error I got was when the delegated pointer was labeled incorrectly in my script.
 
