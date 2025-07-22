@@ -22,7 +22,7 @@ The error you're encountering indicates that Selenium is unable to locate the el
 
 
 Here's how you can modify the code to use WebDriverWait to wait for the element to appear:
-```
+```python
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
