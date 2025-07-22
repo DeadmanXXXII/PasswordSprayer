@@ -22,7 +22,7 @@ The error you're encountering indicates that Selenium is unable to locate the el
 
 
 Here's how you can modify the code to use WebDriverWait to wait for the element to appear:
-
+```
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
@@ -44,5 +44,5 @@ password_field = WebDriverWait(driver, 10).until(
 password_field.send_keys("your_password")
 
 # Continue with the rest of your code...
-
+```
 The WebDriverWait will wait up to 10 seconds (you can adjust this as needed) for the element to be located before continuing. If the element is not found within the timeout, an exception will be thrown. This ensures that Selenium does not try to interact with the element before it's available.
